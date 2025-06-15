@@ -15,7 +15,7 @@
     document.getElementById("teardownForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const website = document.getElementById("websiteUrl").value;
-      const res = await fetch("https://your-backend-url.onrender.com/teardown", {
+      const res = await fetch("https://productteardownv2be.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ website }),
