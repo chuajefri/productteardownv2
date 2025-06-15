@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Teardown Tool</title>
+</head>
+<body>
+  <h1>Product Teardown Tool</h1>
+  <form id="teardownForm">
+    <input type="text" id="websiteUrl" placeholder="Enter company website" />
+    <button type="submit">Generate Report</button>
+  </form>
+  <pre id="result"></pre>
+
+  <script>
+    document.getElementById("teardownForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const website = document.getElementById("websiteUrl").value;
+      const res = await fetch("https://your-backend-url.onrender.com/teardown", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ website }),
+      });
+      const data = await res.json();
+      document.getElementById("result").innerText = data.summary;
+    });
+  </script>
+</body>
+</html>
